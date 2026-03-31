@@ -1,0 +1,6 @@
+.weather-card--resumen {
+    width: 100%;
+}
+.weather-card {
+    border-right: 2px solid #333;
+}

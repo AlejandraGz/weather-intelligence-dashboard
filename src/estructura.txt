@@ -1,0 +1,33 @@
+.
+├── app
+│   ├── app.config.ts
+│   ├── app.css
+│   ├── app.html
+│   ├── app.spec.ts
+│   ├── app.ts
+│   ├── core
+│   │   ├── core-module.ts
+│   │   └── services
+│   │       ├── weather.spec.ts
+│   │       └── weather.ts
+│   ├── fetaures
+│   │   └── weather
+│   │       ├── components
+│   │       │   ├── current-weather
+│   │       │   └── weekly-forecast
+│   │       ├── models
+│   │       │   └── weather.model.ts
+│   │       ├── pages
+│   │       │   └── dashboard
+│   │       ├── styles
+│   │       │   └── wather-card.css
+│   │       ├── weather-module.ts
+│   │       └── weather-routing-module.ts
+│   └── shared
+│       └── shared-module.ts
+├── estructura.txt
+├── index.html
+├── main.ts
+└── styles.css
+
+14 directories, 17 files
