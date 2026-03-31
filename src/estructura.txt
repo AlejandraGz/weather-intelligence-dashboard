@@ -10,17 +10,18 @@
 │   │   └── services
 │   │       ├── weather.spec.ts
 │   │       └── weather.ts
-│   ├── fetaures
+│   ├── features
 │   │   └── weather
 │   │       ├── components
 │   │       │   ├── current-weather
+│   │       │   ├── three-hour-forecast
 │   │       │   └── weekly-forecast
 │   │       ├── models
 │   │       │   └── weather.model.ts
 │   │       ├── pages
 │   │       │   └── dashboard
 │   │       ├── styles
-│   │       │   └── wather-card.css
+│   │       │   └── weather-card.css
 │   │       ├── weather-module.ts
 │   │       └── weather-routing-module.ts
 │   └── shared
@@ -30,4 +31,4 @@
 ├── main.ts
 └── styles.css
 
-14 directories, 17 files
+15 directories, 17 files
