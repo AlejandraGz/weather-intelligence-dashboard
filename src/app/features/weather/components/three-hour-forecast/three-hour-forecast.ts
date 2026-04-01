@@ -47,4 +47,5 @@ export class ThreeHourForecast implements OnInit {
       })
     );
   }
+  
 }
