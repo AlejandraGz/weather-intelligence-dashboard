@@ -4,3 +4,16 @@
     flex-direction: column;
     gap: 15px;
 }
+
+.forecast-item {
+    transition: transform 0.3s ease;
+}
+.forecast-item:hover {
+    cursor: pointer;
+    background-color: rgba(37, 37, 37, 0.26);
+    transform: translateY(-3px);
+}
+.forecast-item.active {
+    background-color: rgb(185, 185, 185);
+    color: black;
+}

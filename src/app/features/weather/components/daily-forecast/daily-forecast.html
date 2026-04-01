@@ -6,7 +6,7 @@
                 <p>{{ today$ | async | date:'hh:mm a'}}</p>
             </div>
 
-            <div class="weather-card__forecast-list">
+            <div class="weather-card__forecast-list" >
 
                 @if (forecast$ | async; as forecast) {
 
@@ -14,7 +14,11 @@
 
                 @if (f.dt_txt.includes('12:00:00')) {
 
-                <div class="forecast-item" [title]="f.weather[0].description">
+                <div 
+                class="forecast-item" 
+                [title]="f.weather[0].description" 
+                (click)="showThreeHourForescatPerDay(f)"
+                [ngClass]="{ 'active' : activeDate === f.dt_txt.split(' ')[0]}">
                     <p>{{ f.dt_txt | date:'EEEE' }}</p>
                     <img [src]="'https://openweathermap.org/img/wn/' + f.weather[0].icon + '@2x.png'" />
                     <p>{{ f.main.temp.toFixed(1) }} °C</p>

@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ForecastItem } from '../../models/weather.model';
-import { interval, map, Observable, shareReplay, startWith } from 'rxjs';
+import { interval, map, Observable, startWith, combineLatest } from 'rxjs';
 import { WeatherService } from '../../../../core/services/weather';
-
+import { ForecastStateService } from '../../../../core/services/forecast-state';
 
 @Component({
   selector: 'app-three-hour-forecast',
@@ -12,40 +12,39 @@ import { WeatherService } from '../../../../core/services/weather';
   styleUrls: [
     './three-hour-forecast.css',
     '../../styles/weather-card.css'
-  ]
+  ],
+  standalone: true
 })
-export class ThreeHourForecast {
-  constructor(private weatherService: WeatherService) {
-    this.forecast$ = this.weatherService
-      .getDailyForecast('Armenia,CO')
-      .pipe(
-        map(f => this.groupForecastByDay(f.list)), // 👈 AQUÍ está la clave
-        shareReplay(1)
-      );
-  }
-  today$ = interval(1000).pipe( //trae la hora actualizada cada 1s
-    startWith(0),
-    map(() => new Date())
-  );
-  forecast$: Observable<Array<{ date: string; items: ForecastItem[] }>>;
+export class ThreeHourForecast implements OnInit {
 
-  groupForecastByDay(list: ForecastItem[]) {
-    const grouped: { [key: string]: any[] } = {};
+  constructor(
+    private weatherService: WeatherService,
+    private forecastStateService: ForecastStateService
+  ) {}
+  // Se declara la variable para guardar la fecha seleccionada
+  selectedDate$!: Observable<string | null>;
 
-    list.forEach(l => {
-      const date = l.dt_txt.split(' ')[0];
+  // se declara la lista filtrada por día 
+  forecastFiltered$!: Observable<ForecastItem[]>;
 
-      if (!grouped[date]) {
-        grouped[date] = [];
-      }
+  ngOnInit() {
 
-      grouped[date].push(l);
-    });
-    console.log(grouped)
+    const forecastData$ = this.weatherService.getDailyForecast('Armenia,CO');
 
-    return Object.entries(grouped).map(([date, items]) => ({
-      date,
-      items
-    }));
+    this.selectedDate$ = this.forecastStateService.selectedDate$;
+
+    this.forecastFiltered$ = combineLatest([
+      forecastData$,
+      this.selectedDate$
+    ]).pipe(
+      map(([forecast, selectedDate]) => {
+
+        if (!selectedDate) return [];
+
+        return forecast.list.filter(item =>
+          item.dt_txt.startsWith(selectedDate)
+        );
+      })
+    );
   }
 }

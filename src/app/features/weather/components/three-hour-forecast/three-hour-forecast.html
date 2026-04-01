@@ -1,41 +1,25 @@
-@if (forecast$ | async; as forecast) {
-  @for (day of forecast; track $index) {
+@if (forecastFiltered$ | async; as forecast) {
+<div class="weather-card">
 
-    <div class="weather-card">
-        <h3>{{ day.items[0].dt_txt | date:'EEEE' }}</h3>
-      <div class="weather-card__forecast-list">
+  <h3 class="title">{{ selectedDate$| async| date:'EEEE' }}</h3>
 
+  <div class="weather-card__forecast-list">
+    @for (day of forecast; track $index) {
 
-        <!--  items del día -->
-        @for (item of day.items; track $index) {
-          <div class="forecast-item"
-               [title]="item.weather[0].description">
-            <p>
-              {{ item.dt_txt | date:'shortTime' }}
-            </p>
-            <!-- icono -->
-            <img
-              [src]="'https://openweathermap.org/img/wn/' 
-                    + item.weather[0]?.icon 
-                    + '@2x.png'"
-            />
+    <!--  items por cada 3 horas del día -->
+    <div class="forecast-item" [title]="day.weather[0].description">
 
-            <!-- temperatura -->
-            <p>
-              {{ item.main.temp | number:'1.0-1' }} °C
-            </p>
+      <p>{{ day.dt_txt | date:'shortTime' }}</p>
+      <!-- icono -->
+      <img [src]="'https://openweathermap.org/img/wn/' + day.weather[0]?.icon + '@2x.png'" />
 
-            <!-- descripción -->
-            <small>
-              {{ item.weather[0]?.description }}
-            </small>
+      <!-- temperatura -->
+      <p>{{ day.main.temp | number:'1.0-1' }} °C</p>
 
-          </div>
-
-        }
-
-      </div>
+      <!-- descripción -->
+      <small>{{ day.weather[0]?.description }}</small>
     </div>
-
-  }
+    }
+  </div>
+</div>
 }
