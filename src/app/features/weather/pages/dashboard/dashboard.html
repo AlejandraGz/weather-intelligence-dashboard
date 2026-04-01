@@ -2,7 +2,12 @@
     <h1 class="weather__title">Clima</h1>
 
     <div class="weather__content">
-        <app-current-weather></app-current-weather>
-        <app-weekly-forecast></app-weekly-forecast>
+        <div class="col-main-weather">
+            <app-current-weather></app-current-weather>
+        </div>
+        <div class="col-forecast">
+            <app-weekly-forecast></app-weekly-forecast>
+            <app-three-hour-forecast></app-three-hour-forecast>
+        </div>
     </div>
 </div>

@@ -1,1 +1,41 @@
-<p>three-hour-forecast works!</p>
+@if (forecast$ | async; as forecast) {
+  @for (day of forecast; track $index) {
+
+    <div class="weather-card">
+        <h3>{{ day.items[0].dt_txt | date:'EEEE' }}</h3>
+      <div class="weather-card__forecast-list">
+
+
+        <!--  items del día -->
+        @for (item of day.items; track $index) {
+          <div class="forecast-item"
+               [title]="item.weather[0].description">
+            <p>
+              {{ item.dt_txt | date:'shortTime' }}
+            </p>
+            <!-- icono -->
+            <img
+              [src]="'https://openweathermap.org/img/wn/' 
+                    + item.weather[0]?.icon 
+                    + '@2x.png'"
+            />
+
+            <!-- temperatura -->
+            <p>
+              {{ item.main.temp | number:'1.0-1' }} °C
+            </p>
+
+            <!-- descripción -->
+            <small>
+              {{ item.weather[0]?.description }}
+            </small>
+
+          </div>
+
+        }
+
+      </div>
+    </div>
+
+  }
+}

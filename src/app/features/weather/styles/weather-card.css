@@ -1,12 +1,11 @@
 .weather-card {
-    padding: 20px 40px;
-    height: 100%;
+    padding: 20px 30px;
 }
 
 .weather-card__details {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 35px;
 }
 
 .weather-card__temperature {
@@ -21,4 +20,24 @@
 .weather-card,
 .forecast-item {
     user-select: none;
+}
+
+.weather-card__forecast-list {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.forecast-item {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(78, 78, 78, 0.479);
+    border-radius: 1em;
+}
+
+.forecast-item img {
+    width: 70px;
+    height: 70px;
 }

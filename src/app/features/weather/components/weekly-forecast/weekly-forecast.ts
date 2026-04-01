@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Forecast } from '../../models/weather.model';
 import { interval, map, Observable, shareReplay, startWith } from 'rxjs';

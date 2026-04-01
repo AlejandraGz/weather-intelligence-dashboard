@@ -1,5 +1,9 @@
 .weather-card--resumen {
     width: 100%;
+    padding: 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .weather-card {
     border-right: 2px solid #333;
