@@ -15,7 +15,7 @@
 │   │       ├── components
 │   │       │   ├── current-weather
 │   │       │   ├── three-hour-forecast
-│   │       │   └── weekly-forecast
+│   │       │   └── daily-forecast
 │   │       ├── models
 │   │       │   └── weather.model.ts
 │   │       ├── pages

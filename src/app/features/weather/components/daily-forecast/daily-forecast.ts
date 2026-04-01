@@ -5,15 +5,15 @@ import { interval, map, Observable, shareReplay, startWith } from 'rxjs';
 import { WeatherService } from '../../../../core/services/weather';
 
 @Component({
-  selector: 'app-weekly-forecast',
+  selector: 'app-daily-forecast',
   imports: [CommonModule],
-  templateUrl: './weekly-forecast.html',
+  templateUrl: './daily-forecast.html',
   styleUrls: [
-    './weekly-forecast.css',
+    './daily-forecast.css',
     '../../styles/weather-card.css'
   ]
 })
-export class WeeklyForecast {
+export class DailyForecast {
 
   constructor(private weatherService: WeatherService) {
     this.forecast$ = this.weatherService.getDailyForecast('Armenia,CO').pipe(shareReplay(1));

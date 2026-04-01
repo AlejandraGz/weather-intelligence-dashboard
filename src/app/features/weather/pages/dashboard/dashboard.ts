@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CurrentWeather } from '../../components/current-weather/current-weather';
-import { WeeklyForecast } from "../../components/weekly-forecast/weekly-forecast";
+import { DailyForecast } from '../../components/daily-forecast/daily-forecast';
 import { ThreeHourForecast } from "../../components/three-hour-forecast/three-hour-forecast";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule, CurrentWeather, WeeklyForecast, ThreeHourForecast],
+  imports: [CommonModule, CurrentWeather, DailyForecast, ThreeHourForecast],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
   standalone: true

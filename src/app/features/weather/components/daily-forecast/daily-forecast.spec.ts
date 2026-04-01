@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WeeklyForecast } from './weekly-forecast';
+import { DailyForecast } from './daily-forecast';
 
-describe('WeeklyForecast', () => {
-  let component: WeeklyForecast;
-  let fixture: ComponentFixture<WeeklyForecast>;
+describe('DailyForecast', () => {
+  let component: DailyForecast;
+  let fixture: ComponentFixture<DailyForecast>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WeeklyForecast],
+      imports: [DailyForecast],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(WeeklyForecast);
+    fixture = TestBed.createComponent(DailyForecast);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
