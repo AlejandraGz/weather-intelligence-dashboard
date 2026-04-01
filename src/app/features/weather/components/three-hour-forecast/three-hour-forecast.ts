@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ForecastItem } from '../../models/weather.model';
-import { interval, map, Observable, startWith, combineLatest } from 'rxjs';
+import { Observable } from 'rxjs';
 import { WeatherService } from '../../../../core/services/weather';
 import { ForecastStateService } from '../../../../core/services/forecast-state';
 
@@ -29,23 +29,8 @@ export class ThreeHourForecast implements OnInit {
 
   ngOnInit() {
 
-    const forecastData$ = this.weatherService.getDailyForecast('Armenia,CO');
-
     this.selectedDate$ = this.forecastStateService.selectedDate$;
-
-    this.forecastFiltered$ = combineLatest([
-      forecastData$,
-      this.selectedDate$
-    ]).pipe(
-      map(([forecast, selectedDate]) => {
-
-        if (!selectedDate) return [];
-
-        return forecast.list.filter(item =>
-          item.dt_txt.startsWith(selectedDate)
-        );
-      })
-    );
+    this.forecastFiltered$ = this.forecastStateService.getForecastByDate(this.selectedDate$)
   }
   
 }

@@ -8,14 +8,17 @@
 │   ├── core
 │   │   ├── core-module.ts
 │   │   └── services
+│   │       ├── forecast-state.spec.ts
+│   │       ├── forecast-state.ts
 │   │       ├── weather.spec.ts
 │   │       └── weather.ts
 │   ├── features
 │   │   └── weather
 │   │       ├── components
 │   │       │   ├── current-weather
-│   │       │   ├── three-hour-forecast
-│   │       │   └── daily-forecast
+│   │       │   ├── daily-forecast
+│   │       │   ├── forecast-chart
+│   │       │   └── three-hour-forecast
 │   │       ├── models
 │   │       │   └── weather.model.ts
 │   │       ├── pages
@@ -31,4 +34,4 @@
 ├── main.ts
 └── styles.css
 
-15 directories, 17 files
+16 directories, 19 files
