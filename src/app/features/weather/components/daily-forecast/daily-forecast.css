@@ -6,14 +6,20 @@
 }
 
 .forecast-item {
+    border: 1px solid #57565691;
+    box-shadow: 0 0 3px 0 #9797978a;
     transition: transform 0.3s ease;
 }
-.forecast-item:hover {
+.forecast-item:hover,
+.forecast-item.active:hover {
+    color: white;
     cursor: pointer;
     background-color: rgba(37, 37, 37, 0.26);
     transform: translateY(-3px);
 }
 .forecast-item.active {
     background-color: rgb(185, 185, 185);
+    box-shadow: 0 0 5px 0 #ffffff;
+    border: 1px solid #ffffff;
     color: black;
 }
