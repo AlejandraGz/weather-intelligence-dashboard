@@ -4,6 +4,7 @@ import { CurrentWeather } from '../../components/current-weather/current-weather
 import { DailyForecast } from '../../components/daily-forecast/daily-forecast';
 import { ThreeHourForecast } from "../../components/three-hour-forecast/three-hour-forecast";
 import { ForecastChart } from '../../components/forecast-chart/forecast-chart';
+import { ThemeService } from '../../../../core/services/theme';
 @Component({
   selector: 'app-dashboard',
   imports: [
@@ -19,6 +20,11 @@ import { ForecastChart } from '../../components/forecast-chart/forecast-chart';
 })
 export class Dashboard {
 
+  constructor(private themeService: ThemeService) { }
+
+  toggleTheme() {
+    this.themeService.toggleTheme();
+  }
   toKm(speed: number): string {
     return (speed * 3.6).toFixed(1);
   }

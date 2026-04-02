@@ -1,25 +1,20 @@
-.weather-card--semana {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.forecast-item {
+    border: 1px solid var(--color-border);
+    box-shadow: 0 0 3px 0 var(--color-box-shadow);
+    transition: var(--transition);
 }
 
-.forecast-item {
-    border: 1px solid #57565691;
-    box-shadow: 0 0 3px 0 #9797978a;
-    transition: transform 0.3s ease;
-}
 .forecast-item:hover,
 .forecast-item.active:hover {
-    color: white;
+    color: var(--text);
     cursor: pointer;
-    background-color: rgba(37, 37, 37, 0.26);
+    background-color: var(--hover-bg);
     transform: translateY(-3px);
 }
+
 .forecast-item.active {
-    background-color: rgb(185, 185, 185);
-    box-shadow: 0 0 5px 0 #ffffff;
-    border: 1px solid #ffffff;
-    color: black;
+    background-color: var(--active-bg);
+    box-shadow: 0 0 5px 0 var(--color-box-shadow);
+    border: 1px solid var(--color-border);
+    color: var(--active-text);
 }

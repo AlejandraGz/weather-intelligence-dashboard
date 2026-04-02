@@ -3,14 +3,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: black;
 }
 
 .weather__content {
     width: 80%;
     display: flex;
-    background-color: rgba(31, 31, 31, 0.336);
-    color: white;
+    background-color: var(--bg);
+    color: var(--text);
     padding: 20px 0;
     border-radius: 1em;
     align-items: stretch;
@@ -19,7 +18,7 @@
 
 .col-main-weather {
     flex: 3;
-    border-right: 2px solid #333;
+    border-right: 2px solid var(--color-border);
 }
 
 .col-forecast {

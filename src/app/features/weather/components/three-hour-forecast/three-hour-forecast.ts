@@ -20,7 +20,8 @@ export class ThreeHourForecast implements OnInit {
   constructor(
     private weatherService: WeatherService,
     private forecastStateService: ForecastStateService
-  ) {}
+  ) { }
+
   // Se declara la variable para guardar la fecha seleccionada
   selectedDate$!: Observable<string | null>;
 
@@ -28,9 +29,8 @@ export class ThreeHourForecast implements OnInit {
   forecastFiltered$!: Observable<ForecastItem[]>;
 
   ngOnInit() {
-
     this.selectedDate$ = this.forecastStateService.selectedDate$;
     this.forecastFiltered$ = this.forecastStateService.getForecastByDate(this.selectedDate$)
   }
-  
+
 }
