@@ -9,15 +9,14 @@ import { WeatherService } from './weather';
 export class ForecastStateService {
 
   constructor(private weatherService: WeatherService) { }
-  private selectedDate = new BehaviorSubject<string | null>(null);
+  private selectedDate = new BehaviorSubject<string>(this.getTomorrowDate());
   selectedDate$ = this.selectedDate.asObservable();
 
   setSelectedDate(date: string) {
     this.selectedDate.next(date); //Trae todos los items por dia
-    console.log(date)
   }
 
-  getForecastByDate(date$: Observable<string | null>): Observable<ForecastItem[]> {
+  getForecastByDate(date$: Observable<string>): Observable<ForecastItem[]> {
     const forecastData$ = this.weatherService.getDailyForecast('Armenia,CO');
 
     return combineLatest([forecastData$, date$]).pipe(
@@ -35,12 +34,14 @@ export class ForecastStateService {
     );
   }
   getTomorrowForecast(): Observable<ForecastItem[]> {
-
+    console.log(this.getTomorrowDate())
+    return this.getForecastByDate(of(this.getTomorrowDate()));
+  }
+  private getTomorrowDate(): string {
+    
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
 
-    const date = tomorrow.toISOString().split('T')[0];
-
-    return this.getForecastByDate(of(date));
+   return tomorrow.toISOString().split('T')[0];
   }
 }

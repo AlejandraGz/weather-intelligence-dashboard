@@ -6,7 +6,7 @@
 }
 
 :root {
-    --transition: all 0.3s ease;
+    --transition: all 0.2s ease;
 }
 
 body.dark-theme {
@@ -17,7 +17,7 @@ body.dark-theme {
     --color-border: #333;
     --color-box-shadow: rgba(0, 0, 0, 0.4);
     --hover-bg: rgba(255, 255, 255, 0.08);
-    --active-bg: #444;
+    --active-bg: #3aa0ffab;
     --active-text: #fff;
 }
 
@@ -29,7 +29,7 @@ body.light-theme {
     --color-border: #b8b8b8;
     --color-box-shadow: rgba(92, 92, 92, 0.1);
     --hover-bg: rgba(0, 0, 0, 0.05);
-    --active-bg: #dcdcdc;
+    --active-bg: #3aa0ffab;
     --active-text: #000;
 }
 

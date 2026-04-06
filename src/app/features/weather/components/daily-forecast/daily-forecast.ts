@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Forecast, ForecastItem } from '../../models/weather.model';
 import { interval, map, Observable, shareReplay, startWith } from 'rxjs';
@@ -14,18 +14,21 @@ import { ForecastStateService } from '../../../../core/services/forecast-state';
   ],
   standalone: true
 })
-export class DailyForecast {
-
+export class DailyForecast implements OnInit{
   activeDate: string = '';
   constructor(private weatherService: WeatherService, private forecastStateService: ForecastStateService) {
     this.forecast$ = this.weatherService.getDailyForecast('Armenia,CO').pipe(shareReplay(1));
   }
+  selectedDate$!: Observable<string>;
   today$ = interval(1000).pipe( //trae la hora actualizada cada 1s
     startWith(0),
     map(() => new Date())
   );
   forecast$: Observable<Forecast>;
 
+  ngOnInit() {
+    this.selectedDate$ = this.forecastStateService.selectedDate$
+  }
   showThreeHourForescatPerDay(f: ForecastItem) {
     const date = f.dt_txt.split(' ')[0];
     this.forecastStateService.setSelectedDate(date);

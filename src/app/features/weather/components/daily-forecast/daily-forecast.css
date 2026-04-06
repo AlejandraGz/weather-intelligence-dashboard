@@ -4,15 +4,14 @@
     transition: var(--transition);
 }
 
-.forecast-item:hover,
-.forecast-item.active:hover {
+.forecast-item:hover {
     color: var(--text);
     cursor: pointer;
     background-color: var(--hover-bg);
     transform: translateY(-3px);
 }
 
-.forecast-item.active {
+.forecast-item.active{
     background-color: var(--active-bg);
     box-shadow: 0 0 5px 0 var(--color-box-shadow);
     border: 1px solid var(--color-border);

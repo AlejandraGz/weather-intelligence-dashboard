@@ -18,12 +18,11 @@ import { ForecastStateService } from '../../../../core/services/forecast-state';
 export class ThreeHourForecast implements OnInit {
 
   constructor(
-    private weatherService: WeatherService,
     private forecastStateService: ForecastStateService
   ) { }
 
   // Se declara la variable para guardar la fecha seleccionada
-  selectedDate$!: Observable<string | null>;
+  selectedDate$!: Observable<string>;
 
   // se declara la lista filtrada por día 
   forecastFiltered$!: Observable<ForecastItem[]>;
