@@ -1,59 +1,140 @@
-# WeatherIntelligenceDashboard
+![Angular](https://img.shields.io/badge/Angular-21-red?logo=angular)
+![RxJS](https://img.shields.io/badge/RxJS-reactive-blue?logo=reactivex)
+![Chart.js](https://img.shields.io/badge/Chart.js-4-orange?logo=chartdotjs)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.4.
+# 🌤️ Panel de Inteligencia Climática
 
-## Development server
+Aplicación web desarrollada en Angular que permite visualizar y analizar el pronóstico del tiempo de forma interactiva. Presenta información climática mediante vistas diarias, detalle por intervalos de 3 horas y gráficos dinámicos.
 
-To start a local development server, run:
+---
+
+## 🚀 Características
+
+* 📅 Visualización del pronóstico por días
+* ⏱️ Detalle del clima en intervalos de 3 horas
+* 📊 Gráficos interactivos con Chart.js
+* 🌙 Modo oscuro y claro adaptable al sistema
+* 🎛️ Toggle manual de tema
+* ⚡ Manejo de estado reactivo con RxJS
+* 🔄 Sincronización entre componentes (dashboard, forecast, gráficos)
+* 🎨 Diseño moderno con variables CSS
+
+---
+
+## 🧠 Arquitectura
+
+El proyecto sigue buenas prácticas de desarrollo en Angular:
+
+* Uso de **componentes standalone**
+* Separación por capas:
+
+  * `core/` → servicios globales (API, estado)
+  * `features/` → lógica del dominio (weather)
+  * `shared/` → reutilizables
+* Manejo de estado con **BehaviorSubject + Observables**
+* Optimización de datos con `shareReplay`
+* Flujo reactivo entre componentes
+
+---
+
+## 🛠️ Tecnologías
+
+* **Angular**
+* **RxJS**
+* **Chart.js**
+* **TypeScript**
+* **CSS (variables + theming)**
+
+---
+
+## 📸 Funcionalidades principales
+
+### 📅 Selección de día
+
+Permite seleccionar un día específico del pronóstico y actualizar automáticamente toda la información relacionada.
+
+### ⏱️ Vista por horas
+
+Muestra el clima segmentado cada 3 horas para un análisis más detallado.
+
+### 📊 Gráfica de temperatura
+
+Visualización clara de la evolución de la temperatura durante el día.
+
+### 🌙 Sistema de temas
+
+* Detecta automáticamente el tema del sistema
+* Permite cambio manual
+* Transiciones suaves entre modos
+
+---
+
+## ⚙️ Instalación
 
 ```bash
-ng serve
+# Clonar repositorio
+git clone https://github.com/AlejandraGz/weather-intelligence-dashboard.git
+
+
+# Entrar al proyecto
+cd weather-intelligence-dashboard
+
+# Instalar dependencias
+npm install
+
+# Ejecutar proyecto
+npm start
+
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Abrir en navegador:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
+## 📦 Estructura del proyecto
+
+El proyecto sigue una arquitectura modular y escalable:
 ```
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
+app/
+├── core/                # Servicios globales (API, estado, tema)
+├── features/
+│   └── weather/         # Módulo principal del dominio
+│       ├── components/  # Componentes UI
+│       ├── models/      # Tipos y modelos
+│       └── pages/       # Vistas principales
+├── shared/              # Elementos reutilizables
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## 🎯 Objetivo del proyecto
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Este proyecto fue desarrollado como práctica para:
 
-```bash
-ng test
-```
+* Implementar **arquitectura escalable en Angular**
+* Manejar estado global con **RxJS**
+* Construir interfaces reactivas
+* Integrar librerías externas como Chart.js
+* Implementar **dark mode profesional**
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## 🚀 Mejoras futuras
 
-```bash
-ng e2e
-```
+* 📍 Geolocalización automática
+* 🌡️ Más métricas (humedad, viento, sensación térmica)
+* 📱 Mejoras responsive
+* 🔔 Alertas climáticas
+* 🌎 Soporte multi-ciudad
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## 👨‍💻 Autor
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Desarrollado por **Alejandra Gonzalez Melendez**
