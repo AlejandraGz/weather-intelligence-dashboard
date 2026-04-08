@@ -1,11 +1,16 @@
 <div class="weather">
-    <h1 class="weather__title">Clima</h1>
 
     <div class="weather__content">
         <div class="col-main-weather">
             <app-current-weather></app-current-weather>
         </div>
         <div class="col-forecast">
+            <div class="switch">
+                <label class="theme-switch">
+                    <input type="checkbox" [checked]="isDark" (change)="toggleTheme()" />
+                    <span class="slider"></span>
+                </label>
+            </div>
             <app-daily-forecast></app-daily-forecast>
             <app-three-hour-forecast></app-three-hour-forecast>
             <app-forecast-chart></app-forecast-chart>

@@ -10,7 +10,7 @@
 .weather-card__details {
     display: flex;
     align-items: center;
-    gap: 35px;
+    gap: 15px;
 }
 
 .weather-card__temperature {

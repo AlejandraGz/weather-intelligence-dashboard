@@ -14,6 +14,7 @@ body.dark-theme {
     --bg-secondary: rgba(78, 78, 78, 0.479);
     --bg-body: #141414;
     --text: #ffffff;
+    --text-secondary: #b8b8b8;
     --color-border: #333;
     --color-box-shadow: rgba(0, 0, 0, 0.4);
     --hover-bg: rgba(255, 255, 255, 0.08);
@@ -26,8 +27,9 @@ body.light-theme {
     --bg-secondary: rgba(158, 158, 158, 0.5);
     --bg-body: #ffffff;
     --text: #222;
+    --text-secondary: #424242;
     --color-border: #b8b8b8;
-    --color-box-shadow: rgba(92, 92, 92, 0.1);
+    --color-box-shadow: rgba(58, 58, 58, 0.4);
     --hover-bg: rgba(0, 0, 0, 0.05);
     --active-bg: #3aa0ffab;
     --active-text: #000;
@@ -88,4 +90,13 @@ input:checked + .slider {
 input:checked + .slider::before {
   transform: translateX(28px);
   content: "☀️";
+}
+.theme-switch,
+.slider,
+.slider::before {
+  cursor: pointer;
+  user-select: none;
+}
+.slider:active::before {
+  transform: scale(0.9);
 }

@@ -20,23 +20,16 @@ import { ThemeService } from '../../../../core/services/theme';
 })
 export class Dashboard {
 
+  isDark = false;
+
   constructor(private themeService: ThemeService) { }
+
+  ngOnInit() {
+    this.isDark = this.themeService.getTheme() === 'dark';
+  }
 
   toggleTheme() {
     this.themeService.toggleTheme();
-  }
-  toKm(speed: number): string {
-    return (speed * 3.6).toFixed(1);
-  }
-
-  toKmVisibility(m: number): string {
-    return (m / 1000).toFixed(1);
-  }
-
-  formatTime(timestamp: number): string {
-    return new Date(timestamp * 1000).toLocaleTimeString([], {
-      hour: '2-digit',
-      minute: '2-digit'
-    });
+    this.isDark = this.themeService.getTheme() === 'dark';
   }
 }

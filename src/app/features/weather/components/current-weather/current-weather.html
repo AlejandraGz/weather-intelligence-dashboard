@@ -2,16 +2,66 @@
 
 <div class="weather-card weather-card--resumen">
 
-    <h3>{{ weather.name }}, {{ weather.sys.country }}</h3>
+    <div class="weather-card__current-weather">
+        <h3>{{ weather.name }}, {{ weather.sys.country }}</h3>
 
-    <img class="weather-card__icon"
-        [src]="'https://openweathermap.org/img/wn/' + weather.weather[0].icon + '@2x.png'" />
+        <img class="weather-card__icon"
+            [src]="'https://openweathermap.org/img/wn/' + weather.weather[0].icon + '@2x.png'" />
 
-    <div class="weather-card__details">
-        <p class="weather-card__temperature">
-            {{ weather.main.temp }} °C
-        </p>
-        <p>{{ weather.weather[0].description }}</p>
+        <div class="weather-card__details">
+            <div class="weather-card__metric">
+                <img class="weather-card__metric-icon" [src]="'assets/icons/weather/thermometer.svg'" />
+                <p class="weather-card__temperature"> {{ weather.main.temp }} °C </p>
+            </div>
+            <p class="weather-card__description">{{ weather.weather[0].description }}</p>
+            
+        </div>
+    </div>
+
+    <div class="weather-card card">
+        <p class="weather-card__title">Sensación térmica</p>
+
+        <div class="weather-card__details">
+            @if (weather.main.feels_like
+            < 20) { <img class="weather-card__metric-icon" [src]="'assets/icons/weather/thermometer-snowflak.svg'" />
+            }
+            @else if (weather.main.feels_like
+            < 26) { <img class="weather-card__metric-icon" [src]="'assets/icons/weather/thermometer.svg'" />
+            }
+            @else {
+            <img class="weather-card__metric-icon" [src]="'assets/icons/weather/thermometer-sun.svg'" />
+            }
+            <p class="weather-card__temperature">{{ weather.main.feels_like }} °C</p>
+        </div>
+    </div>
+
+    <div class="weather-card card">
+        <p class="weather-card__title">Condiciones del aire</p>
+        <div class="weather-card__details">
+            <p class="weather-card__description">Humedad: </p>
+            <p class="weather-card__mesure"> {{ weather.main.humidity }}%</p>
+            <img class="weather-card__metric-icon" [src]="'assets/icons/weather/droplets.svg'" />
+        </div>
+        <div class="weather-card__details">
+            <p class="weather-card__description">Presión:  </p>
+            <p class="weather-card__mesure"> {{ weather.main.pressure }} hPa</p>
+            <img class="weather-card__metric-icon" [src]="'assets/icons/weather/gauge.svg'" />
+        </div>
+    </div>
+
+    <div class="weather-card card">
+        <p class="weather-card__title">Viento</p>
+        <div class="weather-card__details">
+            <p class="weather-card__description">Velocidad: </p>
+            <p class="weather-card__mesure"> {{ weather.wind.speed }} m/s</p>
+            <img class="weather-card__metric-icon" [src]="'assets/icons/weather/wind.svg'" />
+        </div>
+        <div class="weather-card__details">
+            <p class="weather-card__description">Dirección: </p>
+            <p class="weather-card__mesure"> {{ weather.wind.deg }}°</p>
+            <img class="weather-card__metric-icon" [src]="'assets/icons/weather/compass.svg'" />
+        </div>
+
     </div>
 
 </div>

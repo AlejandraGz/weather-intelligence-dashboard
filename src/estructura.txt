@@ -31,9 +31,32 @@
 │   │       └── weather-routing-module.ts
 │   └── shared
 │       └── shared-module.ts
+├── assets
+│   └── icons
+│       └── weather
+│           ├── cloud-drizzle.svg
+│           ├── cloud-fog.svg
+│           ├── cloud-lightning.svg
+│           ├── cloud-moon.svg
+│           ├── cloud-rain.svg
+│           ├── cloud-sun.svg
+│           ├── cloud.svg
+│           ├── compass.svg
+│           ├── droplets.svg
+│           ├── eye.svg
+│           ├── gauge.svg
+│           ├── moon.svg
+│           ├── snowflake.svg
+│           ├── sunrise.svg
+│           ├── sunset.svg
+│           ├── sun.svg
+│           ├── thermometer-snowflake.svg
+│           ├── thermometer-sun.svg
+│           ├── thermometer.svg
+│           └── wind.svg
 ├── estructura.txt
 ├── index.html
 ├── main.ts
 └── styles.css
 
-16 directories, 21 files
+19 directories, 41 files

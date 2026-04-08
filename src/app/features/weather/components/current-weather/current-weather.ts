@@ -18,4 +18,14 @@ export class CurrentWeather {
   constructor(private weatherService: WeatherService) {
     this.weather$ = this.weatherService.getCurrentWeather('Armenia,CO').pipe(shareReplay(1));
   }
+
+  getWeatherIcon(description: string): string {
+    if (description.includes('lluvia')) return 'cloud-rain';
+    if (description.includes('nube')) return 'cloud';
+    if (description.includes('tormenta')) return 'cloud-lightning';
+    if (description.includes('nieve')) return 'snowflake';
+    if (description.includes('cielo claro')) return 'sun';
+
+    return 'cloud';
+  }
 }
