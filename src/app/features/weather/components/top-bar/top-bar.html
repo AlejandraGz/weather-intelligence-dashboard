@@ -1,0 +1,25 @@
+<div class="top-bar">
+
+    @if (today$ | async; as today) {
+    <div class="top-bar__left">
+        <h3 class="top-bar__month">
+            {{ today | date:'MMMM y' }}
+        </h3>
+        <p class="top-bar__date">
+            {{ today | date:'fullDate' }}
+        </p>
+    </div>
+    <div class="top-bar__center">
+        <time class="top-bar__time">
+            {{ today | date:'hh:mm a' }}
+        </time>
+    </div>
+    }
+    <div class="top-bar__right">
+        <label class="theme-switch">
+            <input type="checkbox" [checked]="isDark" (change)="toggleTheme()" />
+            <span class="slider"></span>
+        </label>
+    </div>
+
+</div>

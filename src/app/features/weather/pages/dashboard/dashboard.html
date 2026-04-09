@@ -5,12 +5,7 @@
             <app-current-weather></app-current-weather>
         </div>
         <div class="col-forecast">
-            <div class="switch">
-                <label class="theme-switch">
-                    <input type="checkbox" [checked]="isDark" (change)="toggleTheme()" />
-                    <span class="slider"></span>
-                </label>
-            </div>
+            <app-top-bar></app-top-bar>
             <app-daily-forecast></app-daily-forecast>
             <app-three-hour-forecast></app-three-hour-forecast>
             <app-forecast-chart></app-forecast-chart>

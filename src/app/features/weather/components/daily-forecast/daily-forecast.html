@@ -1,11 +1,4 @@
 <div class="weather-card weather-card--semana">
-
-    <div class="weather-card__date">
-        <h3>{{ today$ | async | date:'MMMM y' }}</h3>
-        <p class="subtitle">{{ today$ | async | date:'fullDate' }}</p>
-        <p>{{ today$ | async | date:'hh:mm a'}}</p>
-    </div>
-
     <div class="weather-card__forecast-list">
 
         @if (forecast$ | async; as forecast) {

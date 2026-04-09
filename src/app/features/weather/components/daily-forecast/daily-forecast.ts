@@ -20,10 +20,7 @@ export class DailyForecast implements OnInit{
     this.forecast$ = this.weatherService.getDailyForecast('Armenia,CO').pipe(shareReplay(1));
   }
   selectedDate$!: Observable<string>;
-  today$ = interval(1000).pipe( //trae la hora actualizada cada 1s
-    startWith(0),
-    map(() => new Date())
-  );
+
   forecast$: Observable<Forecast>;
 
   ngOnInit() {

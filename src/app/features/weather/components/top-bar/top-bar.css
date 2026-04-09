@@ -1,0 +1,44 @@
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 20px;
+  border-radius: 12px;
+
+  background: var(--color-bg-surface);
+
+  user-select: none;
+}
+
+.top-bar__left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.top-bar__center {
+  transform: translateX(-50%);
+}
+
+.top-bar__right {
+  display: flex;
+  align-items: center;
+}
+
+.top-bar__month {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.top-bar__date {
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+.top-bar__time {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
