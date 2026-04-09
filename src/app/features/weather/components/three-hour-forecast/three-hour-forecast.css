@@ -46,12 +46,12 @@
 
   color: var(--temp-text-warm);
 }
-.card-hot-extreme {
+.card-hot {
   background: linear-gradient(
     135deg,
     var(--temp-hot-start),
     var(--temp-hot-end)
   );
 
-  color: var(--temp-text-extreme);
+  color: var(--temp-text-hot);
 }

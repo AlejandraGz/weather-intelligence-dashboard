@@ -18,12 +18,13 @@
   --temp-warm-start: rgba(246, 202, 59, 0.671);
   --temp-warm-end: rgba(124, 89, 18, 0.253);
   
-  --temp-hot-start: rgba(231, 77, 60, 0.466);
-  --temp-hot-end: rgba(246, 184, 59, 0.301);
+  --temp-hot-start: rgba(231, 77, 60, 0.616);
+  --temp-hot-end: rgba(246, 159, 59, 0.336);
 
   --temp-text-cool: #063a4a;
   --temp-text-soft: #1e4d2b;
-  --temp-text-warm: #5a1f17;
+  --temp-text-warm: #595a17;
+  --temp-text-hot: #5a1f17;
 }
 
 /*  Dark Theme */
@@ -51,12 +52,13 @@ body.dark-theme {
   --temp-warm-start: rgba(246, 184, 59, 0.384);
   --temp-warm-end: rgba(122, 92, 32, 0.384);
 
-  --temp-hot-start: rgba(231, 77, 60, 0.466);
-  --temp-hot-end: rgba(246, 184, 59, 0.384);
+  --temp-hot-start: rgba(231, 77, 60, 0.637);
+  --temp-hot-end: rgba(246, 149, 59, 0.322);
 
   --temp-text-cool: #cfefff;
   --temp-text-soft: #d7ffe3;
-  --temp-text-warm: #ffe0d6;
+  --temp-text-warm: #fff5d6;
+  --temp-text-hot: #ffe0d6;
 }
 
 /*  Light Theme */
