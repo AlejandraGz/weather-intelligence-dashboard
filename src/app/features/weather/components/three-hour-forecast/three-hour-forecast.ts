@@ -31,5 +31,19 @@ export class ThreeHourForecast implements OnInit {
     this.selectedDate$ = this.forecastStateService.selectedDate$;
     this.forecastFiltered$ = this.forecastStateService.getForecastByDate(this.selectedDate$)
   }
+  getTempClass(temp: number): string {
 
+    if (temp <= 18) {
+      return 'card-cool';
+    }
+
+    if (temp <= 24) {
+      return 'card-soft';
+    }
+    if (temp <= 28) {
+      return 'card-warm';
+    }
+
+    return 'card-hot';
+  }
 }

@@ -1,6 +1,7 @@
 <div class="weather-card weather-card--semana">
+  <h3 class="title">Pronóstico semanal</h3>
+    
     <div class="weather-card__forecast-list">
-
         @if (forecast$ | async; as forecast) {
 
         @for (f of forecast.list; track $index) {

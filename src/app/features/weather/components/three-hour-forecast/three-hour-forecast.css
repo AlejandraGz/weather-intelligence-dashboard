@@ -1,3 +1,57 @@
-.weather-card {
-    gap: 20px;
+.weather-card__forecast-list {
+  display: flex;
+
+  flex-wrap: nowrap;
+  gap: 10px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  width: 100%;
+  max-width: 100%;
+
+  padding-bottom: 10px;
+}
+
+.forecast-item {
+  flex: 0 0 auto !important;
+  min-width: 100px;
+}
+
+.forecast-item img {
+  width: 30px;
+  height: 30px;
+}
+
+.card-cool {
+  background: linear-gradient(135deg,
+      var(--temp-cool-start),
+      var(--temp-cool-end));
+
+  color: var(--temp-text-cool);
+}
+
+.card-soft {
+  background: linear-gradient(135deg,
+      var(--temp-soft-start),
+      var(--temp-soft-end));
+
+  color: var(--temp-text-soft);
+}
+
+.card-warm {
+  background: linear-gradient(135deg,
+      var(--temp-warm-start),
+      var(--temp-warm-end));
+
+  color: var(--temp-text-warm);
+}
+.card-hot-extreme {
+  background: linear-gradient(
+    135deg,
+    var(--temp-hot-start),
+    var(--temp-hot-end)
+  );
+
+  color: var(--temp-text-extreme);
 }

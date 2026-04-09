@@ -8,12 +8,29 @@
 :root {
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
+
+  --temp-cool-start: rgba(11, 123, 167, 0.658);
+  --temp-cool-end: rgba(0, 180, 216, 0.212);
+
+  --temp-soft-start: rgba(46, 204, 112, 0.678);
+  --temp-soft-end: rgba(144, 238, 144, 0.26);
+
+  --temp-warm-start: rgba(246, 202, 59, 0.671);
+  --temp-warm-end: rgba(124, 89, 18, 0.253);
+  
+  --temp-hot-start: rgba(231, 77, 60, 0.466);
+  --temp-hot-end: rgba(246, 184, 59, 0.301);
+
+  --temp-text-cool: #063a4a;
+  --temp-text-soft: #1e4d2b;
+  --temp-text-warm: #5a1f17;
 }
 
-/* 🌙 Dark Theme */
+/*  Dark Theme */
 body.dark-theme {
   --color-bg-main: #0f172a;
   --color-bg-surface: #1e293b;
+  --color-bg-soft: #06080e1f;
   --color-bg-muted: #334155;
 
   --color-text-primary: #f1f5f9;
@@ -23,10 +40,26 @@ body.dark-theme {
   --color-accent-hover: #2563eb;
 
   --color-border: #0f1e3380;
-  --color-shadow: rgba(0, 0, 0, 0.3);;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+
+  --temp-cool-start: rgba(0, 180, 216, 0.5);
+  --temp-cool-end: rgba(7, 97, 133, 0.10);
+
+  --temp-soft-start: rgba(46, 204, 112, 0.568);
+  --temp-soft-end: rgba(144, 238, 144, 0.08);
+
+  --temp-warm-start: rgba(246, 184, 59, 0.384);
+  --temp-warm-end: rgba(122, 92, 32, 0.384);
+
+  --temp-hot-start: rgba(231, 77, 60, 0.466);
+  --temp-hot-end: rgba(246, 184, 59, 0.384);
+
+  --temp-text-cool: #cfefff;
+  --temp-text-soft: #d7ffe3;
+  --temp-text-warm: #ffe0d6;
 }
 
-/* ☀️ Light Theme */
+/*  Light Theme */
 body.light-theme {
   --color-bg-main: #d3e0ec;
   --color-bg-surface: #ffffff;

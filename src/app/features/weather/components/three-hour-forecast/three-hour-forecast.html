@@ -1,13 +1,13 @@
 @if (forecastFiltered$ | async; as forecast) {
 <div class="weather-card">
 
-  <h3 class="title">{{ selectedDate$| async| date:'EEEE' }}</h3>
+  <h3 class="title"> Pronóstico para el día {{ selectedDate$| async| date:'EEEE' }} {{ selectedDate$| async| date:"dd 'de' MMMM" }}</h3>
 
   <div class="weather-card__forecast-list">
     @for (day of forecast; track $index) {
 
     <!--  items por cada 3 horas del día -->
-    <div class="forecast-item" [title]="day.weather[0].description">
+    <div class="forecast-item" [title]="day.weather[0].description" [ngClass]="getTempClass(day.main.temp)">
 
       <p>{{ day.dt_txt | date:'shortTime' }}</p>
       <!-- icono -->
