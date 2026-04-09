@@ -1,19 +1,19 @@
 .forecast-item {
     border: 1px solid var(--color-border);
-    box-shadow: 0 0 3px 0 var(--color-box-shadow);
+    box-shadow: 0 0 3px 0 var(--color-shadow);
     transition: var(--transition);
 }
 
 .forecast-item:hover {
-    color: var(--text);
+    color: var(--color-text-primary);
     cursor: pointer;
-    background-color: var(--hover-bg);
+    background-color: var(--color-accent);
     transform: translateY(-3px);
 }
 
 .forecast-item.active{
     background-color: var(--active-bg);
-    box-shadow: 0 0 5px 0 var(--color-box-shadow);
+    box-shadow: 0 0 5px 0 var(--color-shadow);
     border: 1px solid var(--color-border);
     color: var(--active-text);
 }

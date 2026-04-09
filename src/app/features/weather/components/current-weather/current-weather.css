@@ -37,13 +37,13 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
-    background-color: var(--bg-secondary);
-    box-shadow: 0 8px 8px var(--color-box-shadow);
+    background-color: var(--color-accent );
+    box-shadow: 0 8px 8px var(--color-shadow);
     border-radius: 1em;
     margin-top: 20px;
 }
 .weather-card__title {
-    color: var(--text-secondary);
+    color: var(--color-text-secondary);
 }
 .weather-card__mesure {
     font-size: 18px;
