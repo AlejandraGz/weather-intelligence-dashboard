@@ -57,3 +57,7 @@ li {
 li:hover {
     background: var(--color-bg-muted);
 }
+.muted {
+  color: var(--color-text-muted);
+  font-size: 11px;
+}

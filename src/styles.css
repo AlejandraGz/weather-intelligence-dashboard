@@ -39,6 +39,7 @@ body.dark-theme {
 
   --color-text-primary: #f1f5f9;
   --color-text-secondary: #cdd1d8;
+  --color-text-muted: #c2c2c2a2;
 
   --color-accent: #076185;
   --color-accent-hover: #2563eb;
@@ -74,6 +75,7 @@ body.light-theme {
 
   --color-text-primary: #0f172a;
   --color-text-secondary: #ffffff;
+  --color-text-muted: #383838e5;
 
   --color-accent: rgb(69, 163, 201);
   --color-accent-hover: #2563eb;
