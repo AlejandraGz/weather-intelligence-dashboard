@@ -55,3 +55,6 @@
 
   color: var(--temp-text-hot);
 }
+small {
+  text-transform: capitalize;
+}

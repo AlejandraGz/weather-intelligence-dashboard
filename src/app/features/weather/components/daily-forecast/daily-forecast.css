@@ -20,3 +20,6 @@
 .weather-card__date{
     padding-bottom: 20px;
 }
+.item_title{
+    text-transform: capitalize;
+}
