@@ -53,7 +53,7 @@ export class CitySearch implements OnInit {
   selectCity(city: any) {
     this.weatherService.setSelectedCity(city);
 
-    this.searchControl.setValue(`${city.name}, ${city.country}`, { emitEvent: false });
+    this.searchControl.setValue(`${city.name} - ${city.state}, ${city.country}`, { emitEvent: false });
 
     this.showList = false;
     this.cities = [];
