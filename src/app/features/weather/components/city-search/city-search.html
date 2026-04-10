@@ -1,0 +1,22 @@
+<div class="weather-card input-container">
+
+  <input
+    type="text"
+    placeholder="Buscar ciudad..."
+    [formControl]="searchControl"
+    (focus)="showList = true"
+  />
+
+  @if (cities.length > 0 && showList) {
+  <ul class="dropdown">
+
+    @for(city of cities; track $index) {
+    <li (click)="selectCity(city)">
+      {{ city.name }} - {{ city.country }}
+    </li>
+    }
+
+  </ul>
+  }
+
+</div>

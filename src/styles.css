@@ -46,6 +46,8 @@ body.dark-theme {
   --color-border: #0f1e3380;
   --color-shadow: rgba(0, 0, 0, 0.3);
 
+  --color-border-input-active: var(--color-accent);
+
   --temp-cool-start: rgba(0, 180, 216, 0.5);
   --temp-cool-end: rgba(7, 97, 133, 0.10);
 
@@ -78,6 +80,8 @@ body.light-theme {
 
   --color-border: #cbd5e183;
   --color-shadow: rgba(59, 59, 59, 0.3);
+
+  --color-border-input-active: var(--color-accent)
 }
 
 /* Base */

@@ -5,6 +5,7 @@ import { DailyForecast } from '../../components/daily-forecast/daily-forecast';
 import { ThreeHourForecast } from "../../components/three-hour-forecast/three-hour-forecast";
 import { ForecastChart } from '../../components/forecast-chart/forecast-chart';
 import { TopBar } from '../../components/top-bar/top-bar';
+import { CitySearch } from "../../components/city-search/city-search";
 @Component({
   selector: 'app-dashboard',
   imports: [
@@ -13,8 +14,9 @@ import { TopBar } from '../../components/top-bar/top-bar';
     DailyForecast,
     ThreeHourForecast,
     ForecastChart,
-    TopBar
-  ],
+    TopBar,
+    CitySearch
+],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
   standalone: true

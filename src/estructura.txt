@@ -20,7 +20,8 @@
 │   │       │   ├── current-weather
 │   │       │   ├── daily-forecast
 │   │       │   ├── forecast-chart
-│   │       │   └── three-hour-forecast
+│   │       │   ├── three-hour-forecast
+│   │       │   └── top-bar
 │   │       ├── models
 │   │       │   └── weather.model.ts
 │   │       ├── pages
@@ -54,9 +55,10 @@
 │           ├── thermometer-sun.svg
 │           ├── thermometer.svg
 │           └── wind.svg
+├── environments
 ├── estructura.txt
 ├── index.html
 ├── main.ts
 └── styles.css
 
-19 directories, 41 files
+21 directories, 41 files
