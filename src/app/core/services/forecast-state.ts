@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, combineLatest, map, Observable, of } from 'rxjs';
-import { ForecastItem } from '../../features/weather/models/weather.model';
-import { WeatherService } from './weather';
+import { Forecast, ForecastItem } from '../../features/weather/models/weather.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ForecastStateService {
 
-  constructor(private weatherService: WeatherService) { }
   private selectedDate = new BehaviorSubject<string>(this.getTomorrowDate());
   selectedDate$ = this.selectedDate.asObservable();
 
@@ -16,10 +14,12 @@ export class ForecastStateService {
     this.selectedDate.next(date); //Trae todos los items por dia
   }
 
-  getForecastByDate(date$: Observable<string>): Observable<ForecastItem[]> {
-    const forecastData$ = this.weatherService.getDailyForecast('Armenia,CO');
+  getForecastByDate(
+    forecast$: Observable<Forecast>,
+    date$: Observable<string>
+  ): Observable<ForecastItem[]> {
 
-    return combineLatest([forecastData$, date$]).pipe(
+    return combineLatest([forecast$, date$]).pipe(
       map(([forecast, date]) => {
         if (!date || !forecast?.list) return [];
 
@@ -27,21 +27,15 @@ export class ForecastStateService {
           item.dt_txt.startsWith(date)
         );
       }),
-      catchError(err => {
-        console.error('Error al obtener el pronostico por día seleccionado', err)
-        return of([]);
-      })
+      catchError(() => of([]))
     );
   }
-  getTomorrowForecast(): Observable<ForecastItem[]> {
-    console.log(this.getTomorrowDate())
-    return this.getForecastByDate(of(this.getTomorrowDate()));
-  }
+
   private getTomorrowDate(): string {
-    
+
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
 
-   return tomorrow.toISOString().split('T')[0];
+    return tomorrow.toISOString().split('T')[0];
   }
 }

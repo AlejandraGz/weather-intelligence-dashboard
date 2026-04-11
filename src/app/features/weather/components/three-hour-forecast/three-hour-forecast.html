@@ -1,7 +1,7 @@
-@if (forecastFiltered$ | async; as forecast) {
+@if (forecastFiltered() ; as forecast) {
 <div class="weather-card">
 
-  <h3 class="title"> Pronóstico para el día {{ selectedDate$| async| date:'EEEE' }} {{ selectedDate$| async| date:"dd 'de' MMMM" }}</h3>
+  <h3 class="title"> Pronóstico para el día {{ selectedDate()| date:'EEEE' }} {{ selectedDate() | date:"dd 'de' MMMM" }}</h3>
 
   <div class="weather-card__forecast-list">
     @for (day of forecast; track $index) {

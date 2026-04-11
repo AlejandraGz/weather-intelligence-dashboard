@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ForecastItem } from '../../models/weather.model';
-import { Observable } from 'rxjs';
-import { WeatherService } from '../../../../core/services/weather';
-import { ForecastStateService } from '../../../../core/services/forecast-state';
 
 @Component({
   selector: 'app-three-hour-forecast',
@@ -15,22 +12,18 @@ import { ForecastStateService } from '../../../../core/services/forecast-state';
   ],
   standalone: true
 })
-export class ThreeHourForecast implements OnInit {
+export class ThreeHourForecast{
 
   constructor(
-    private forecastStateService: ForecastStateService
   ) { }
 
   // Se declara la variable para guardar la fecha seleccionada
-  selectedDate$!: Observable<string>;
+  selectedDate = input<string | null>();
 
   // se declara la lista filtrada por día 
-  forecastFiltered$!: Observable<ForecastItem[]>;
+  forecastFiltered = input<ForecastItem[] | null>();
 
-  ngOnInit() {
-    this.selectedDate$ = this.forecastStateService.selectedDate$;
-    this.forecastFiltered$ = this.forecastStateService.getForecastByDate(this.selectedDate$)
-  }
+
   getTempClass(temp: number): string {
 
     if (temp <= 18) {

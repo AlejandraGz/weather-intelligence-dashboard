@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Weather, Forecast } from '../../features/weather/models/weather.model';
+import { Weather, Forecast, City } from '../../features/weather/models/weather.model';
 import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  private selectedCitySubject = new BehaviorSubject<any>(null);
+  private selectedCitySubject = new BehaviorSubject<City | null>(null);
   selectedCity$ = this.selectedCitySubject.asObservable();
 
   //PARAMETROS BASE REUTILIZABLES
@@ -30,14 +30,20 @@ export class WeatherService {
   }
 
   // CLIMA ACTUAL
-  getCurrentWeather(city: string) {
-    const params = this.baseParams().set('q', city);
+  getCurrentWeatherByCoords(lat: number, lon: number) {
+    const params = this.baseParams()
+      .set('lat', lat)
+      .set('lon', lon);
+
     return this.get<Weather>('weather', params);
   }
 
   // FORECAST
-  getDailyForecast(city: string) {
-    const params = this.baseParams().set('q', city);
+  getDailyForecastByCoords(lat: number, lon: number) {
+    const params = this.baseParams()
+      .set('lat', lat)
+      .set('lon', lon);
+
     return this.get<Forecast>('forecast', params);
   }
 
@@ -50,7 +56,7 @@ export class WeatherService {
       }
     });
   }
-  setSelectedCity(city: any) {
+  setSelectedCity(city: City) {
     this.selectedCitySubject.next(city);
   }
 }

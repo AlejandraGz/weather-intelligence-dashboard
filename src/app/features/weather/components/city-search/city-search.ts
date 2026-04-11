@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { WeatherService } from '../../../../core/services/weather';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap, of } from 'rxjs';
+import { City } from '../../models/weather.model';
 
 
 @Component({
@@ -50,7 +51,7 @@ export class CitySearch implements OnInit {
 
   }
 
-  selectCity(city: any) {
+  selectCity(city: City) {
     this.weatherService.setSelectedCity(city);
 
     this.searchControl.setValue(`${city.name} - ${city.state}, ${city.country}`, { emitEvent: false });

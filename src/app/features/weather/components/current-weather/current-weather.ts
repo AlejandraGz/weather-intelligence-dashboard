@@ -1,8 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Weather } from '../../models/weather.model';
-import { Observable, shareReplay } from 'rxjs';
-import { WeatherService } from '../../../../core/services/weather';
 
 @Component({
   selector: 'app-current-weather',
@@ -14,9 +12,9 @@ import { WeatherService } from '../../../../core/services/weather';
   ]
 })
 export class CurrentWeather {
-  weather$: Observable<Weather>;
-  constructor(private weatherService: WeatherService) {
-    this.weather$ = this.weatherService.getCurrentWeather('Armenia,CO').pipe(shareReplay(1));
+  currentWeather = input<Weather | null>();
+  
+  constructor() {
   }
 
   getWeatherIcon(description: string): string {

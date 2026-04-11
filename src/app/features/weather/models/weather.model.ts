@@ -70,3 +70,10 @@ export interface ForecastItem {
         '3h'?: number;
     };
 }
+export interface City {
+  name: string;
+  lat: number;
+  lon: number;
+  country: string;
+  state?: string;
+}

@@ -2,7 +2,7 @@
   <h3 class="title">Pronóstico semanal</h3>
     
     <div class="weather-card__forecast-list">
-        @if (forecast$ | async; as forecast) {
+        @if (forecast(); as forecast) {
 
         @for (f of forecast.list; track $index) {
 
@@ -10,7 +10,8 @@
 
         <div class="forecast-item" [title]="f.weather[0].description" (click)="showThreeHourForescatPerDay(f)"
             [ngClass]="{ 'active' : activeDate === f.dt_txt.split(' ')[0]}"
-            [ngClass]="{ 'active' : (selectedDate$ | async ) === f.dt_txt.split(' ')[0]}">
+            [ngClass]="{ 'active' : (selectedDate() ) === f.dt_txt.split(' ')[0]}"
+            >
             <p class="item_title">{{ f.dt_txt | date:'EEEE' }}</p>
             <img [src]="'https://openweathermap.org/img/wn/' + f.weather[0].icon + '@2x.png'" />
             <p>{{ f.main.temp.toFixed(1) }} °C</p>

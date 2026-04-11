@@ -1,15 +1,5 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  OnDestroy,
-  ViewChild,
-  AfterViewInit
-} from '@angular/core';
-
-import { ForecastStateService } from '../../../../core/services/forecast-state';
+import { Component, ElementRef, ViewChild, AfterViewInit, input, effect } from '@angular/core';
 import { ForecastItem } from '../../models/weather.model';
-import { Observable, Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Chart } from 'chart.js/auto';
 import { ChartOptions } from 'chart.js';
@@ -24,29 +14,38 @@ import { ChartOptions } from 'chart.js';
     '../../styles/weather-card.css'
   ]
 })
-export class ForecastChart implements OnInit, AfterViewInit, OnDestroy {
+export class ForecastChart implements AfterViewInit {
 
   @ViewChild('miGrafica', { static: false })
   canvasRef!: ElementRef<HTMLCanvasElement>;
+  
+  viewReady: boolean = false;
 
-  selectedForecast$!: Observable<ForecastItem[]>;
+  forecastFiltered = input<ForecastItem[] | null>();
+  selectedDate = input<string | null>();
 
   chart: Chart | null = null;
-  private sub?: Subscription;
 
-  constructor(private forecastService: ForecastStateService) {}
+  constructor() {
+    effect(() => {
+      const data = this.forecastFiltered();
+      const date = this.selectedDate();
 
-  ngOnInit() {
-    this.selectedForecast$ =
-      this.forecastService.getForecastByDate(
-        this.forecastService.selectedDate$
-      );
-  }
-  ngAfterViewInit() {
-    this.sub = this.selectedForecast$.subscribe(data => {
-      if (!data?.length) return;
+      console.log('📊 chart effect:', { data, date });
+
+      if (!data?.length) {
+        console.log('⚠️ No hay data');
+        return;
+      }
+
+      console.log('✅ renderizando gráfica');
+
       this.renderChart(data);
     });
+  }
+
+  ngAfterViewInit() {
+    this.viewReady = true;
   }
 
   private renderChart(data: ForecastItem[]) {
@@ -130,7 +129,6 @@ export class ForecastChart implements OnInit, AfterViewInit, OnDestroy {
       return;
     }
 
-    // 👉 ACTUALIZACIÓN (SIN DESTRUIR)
     this.chart.data.labels = labels;
     this.chart.data.datasets[0].data = temperaturas;
 
@@ -146,73 +144,68 @@ export class ForecastChart implements OnInit, AfterViewInit, OnDestroy {
     }).replace(' ', '');
   }
 
-private getChartOptions(): ChartOptions<'line'> {
-  return {
-    responsive: true,
-    maintainAspectRatio: false,
+  private getChartOptions(): ChartOptions<'line'> {
+    return {
+      responsive: true,
+      maintainAspectRatio: false,
 
-    interaction: {
-      mode: 'index',
-      intersect: false
-    },
+      interaction: {
+        mode: 'index',
+        intersect: false
+      },
 
-    plugins: {
-      legend: {
-        labels: {
-          color: '#444',
-          font: {
-            size: 13,
-            weight: 'bold'
+      plugins: {
+        legend: {
+          labels: {
+            color: '#444',
+            font: {
+              size: 13,
+              weight: 'bold'
+            }
+          }
+        },
+
+        tooltip: {
+          backgroundColor: '#1f1f1f94',
+          titleColor: '#fff',
+          bodyColor: '#fff',
+          padding: 12,
+          cornerRadius: 12,
+          displayColors: false,
+          callbacks: {
+            label: (ctx: any) => {
+              const temp = ctx.raw;
+
+              let estado = '';
+              if (temp <= 18) estado = '❄️ Frío';
+              else if (temp <= 24) estado = '🌤️ Agradable';
+              else if (temp <= 28) estado = '🌡️ Cálido';
+              else estado = '🔥 Caliente';
+
+              return `${temp}°C • ${estado}`;
+            }
           }
         }
       },
 
-      tooltip: {
-        backgroundColor: '#1f1f1f94',
-        titleColor: '#fff',
-        bodyColor: '#fff',
-        padding: 12,
-        cornerRadius: 12,
-        displayColors: false,
-        callbacks: {
-          label: (ctx: any) => {
-            const temp = ctx.raw;
-
-            let estado = '';
-            if (temp <= 18) estado = '❄️ Frío';
-            else if (temp <= 24) estado = '🌤️ Agradable';
-            else if (temp <= 28) estado = '🌡️ Cálido';
-            else estado = '🔥 Caliente';
-
-            return `${temp}°C • ${estado}`;
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: {
+            color: '#666',
+            maxRotation: 0,
+            autoSkip: true,
+            maxTicksLimit: 8,
+            font: { size: 12 }
+          }
+        },
+        y: {
+          grid: { display: false },
+          ticks: {
+            color: '#666'
           }
         }
       }
-    },
-
-    scales: {
-      x: {
-        grid: { display: false },
-        ticks: {
-          color: '#666',
-          maxRotation: 0,
-          autoSkip: true,
-          maxTicksLimit: 8,
-          font: { size: 12 }
-        }
-      },
-      y: {
-        grid: { display: false },
-        ticks: {
-          color: '#666'
-        }
-      }
-    }
-  };
-}
-
-  ngOnDestroy() {
-    this.sub?.unsubscribe();
-    this.chart?.destroy();
+    };
   }
 }

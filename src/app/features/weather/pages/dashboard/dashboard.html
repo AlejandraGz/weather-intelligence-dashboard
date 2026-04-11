@@ -3,13 +3,14 @@
     <div class="weather__content">
         <div class="col-main-weather">
             <app-city-search></app-city-search>
-            <app-current-weather></app-current-weather>
+            <app-current-weather [currentWeather]="currentWeather$ | async" />
         </div>
         <div class="col-forecast">
             <app-top-bar></app-top-bar>
-            <app-daily-forecast></app-daily-forecast>
-            <app-three-hour-forecast></app-three-hour-forecast>
-            <app-forecast-chart></app-forecast-chart>
+            <app-daily-forecast [forecast]="forecast$ | async" [selectedDate]="selectedDate$ | async" />
+            <app-three-hour-forecast [forecastFiltered]="(forecastByDate$ | async) ?? []"
+                [selectedDate]="(selectedDate$ | async) ?? ''" />
+            <app-forecast-chart [forecastFiltered]="(forecastByDate$ | async) ?? []" [selectedDate]="selectedDate$ | async" />
         </div>
     </div>
 </div>
