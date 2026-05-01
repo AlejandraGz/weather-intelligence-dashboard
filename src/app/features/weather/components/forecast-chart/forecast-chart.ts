@@ -31,14 +31,9 @@ export class ForecastChart implements AfterViewInit {
       const data = this.forecastFiltered();
       const date = this.selectedDate();
 
-      console.log('📊 chart effect:', { data, date });
-
       if (!data?.length) {
-        console.log('⚠️ No hay data');
         return;
       }
-
-      console.log('✅ renderizando gráfica');
 
       this.renderChart(data);
     });

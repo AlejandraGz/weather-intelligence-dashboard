@@ -10,7 +10,7 @@ export class WeatherService {
 
   private apiKey = '4688fe35a7866de3acbb6c053aeb8416';
   private baseURL = 'https://api.openweathermap.org/data/2.5';
-  private geoUrl = 'https://api.openweathermap.org/geo/1.0/direct';
+  private geoUrl = 'https://api.openweathermap.org/geo/1.0';
 
   constructor(private http: HttpClient) { }
 
@@ -48,7 +48,7 @@ export class WeatherService {
   }
 
   searchCity(city: string): Observable<any> {
-    return this.http.get(this.geoUrl, {
+    return this.http.get(`${this.geoUrl}/direct`, {
       params: {
         q: city,
         limit: '5',
@@ -59,4 +59,16 @@ export class WeatherService {
   setSelectedCity(city: City) {
     this.selectedCitySubject.next(city);
   }
+  getCityByCoords(lat: number, lon: number): Observable<City[]> {
+  return this.http.get<City[]>(`${this.geoUrl}/reverse`,
+    {
+      params: {
+        lat,
+        lon,
+        limit: 1,
+        appid: this.apiKey
+      }
+    }
+  );
+}
 }

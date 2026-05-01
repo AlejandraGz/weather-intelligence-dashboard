@@ -4,6 +4,7 @@ import { WeatherService } from '../../../../core/services/weather';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap, of } from 'rxjs';
 import { City } from '../../models/weather.model';
+import { LocationService } from '../../../../core/services/location';
 
 
 @Component({
@@ -16,39 +17,46 @@ import { City } from '../../models/weather.model';
   ]
 })
 export class CitySearch implements OnInit {
+
   cities: any[] = [];
   showList: boolean = false;
 
   searchControl = new FormControl('');
 
-  constructor(private weatherService: WeatherService) { }
+  constructor(private weatherService: WeatherService, private locationService: LocationService) { }
 
   ngOnInit(): void {
-    const citySaved = localStorage.getItem('city');
 
-    if (citySaved) {
-      try {
-        const city = JSON.parse(citySaved);
-        this.selectCity(city);
-      } catch (e) {
-        localStorage.removeItem('city');
-      }
-    }
+    this.locationService.getUserLocation().subscribe(location => {
+      if (!location) return;
+
+      this.weatherService.getCityByCoords(location.lat, location.lon)
+        .subscribe(cities => {
+
+          if (!cities || cities.length === 0) return;
+
+          const city = cities[0];
+          this.selectCity(city);
+
+          this.weatherService.getCurrentWeatherByCoords(city.lat, city.lon)
+            .subscribe(weather => {
+              console.log('Clima:', weather);
+            });
+        });
+    });
 
     this.searchControl.valueChanges.pipe(
-      debounceTime(400),
+      debounceTime(200),
       distinctUntilChanged(),
       switchMap(value => {
         if (!value || value.length < 2) {
-          return of([])
+          return of([]);
         }
-        return this.weatherService.searchCity(value)
+        return this.weatherService.searchCity(value);
       })
     ).subscribe(res => {
       this.cities = res;
-    })
-
-
+    });
   }
 
   selectCity(city: City) {
